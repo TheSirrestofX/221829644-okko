@@ -23,7 +23,34 @@
         echo $number . " ";
         $number += 2;
     }
-    //numba 2
+    ?>
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <title>Document</title>
+        <h3>Activity 2</h3>
+    </head>
+    <body>
+        <form method= "post" action= " "> 
+            <label>Please enter the password:</label>
+            <input type = "password" name = "password">
+            <input type = "submit" value = "Submit">
+        </form>
+    </body>
+    </html>
+
+    
+    <?php
+        $correct_password = "password123";
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+            $input_password = $_POST['password'];
+            if($input_password === $correct_password){
+                echo "Access Granted.";
+            }else{
+                echo "Incorrect Password";
+            }
+        }
     ?>
 
     <?php
@@ -108,5 +135,62 @@
     }
     ?>
 
+    <h3>Activity 10</h3>
+    <?php
+    if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['number'])){
+        $number = $POST['number'];
+        $is_prime = true;
+        if($number < 2){
+            $is_prime = false;
+        } else{
+            for ($z = 2; $z <= sqrt($number); $z++){
+                if($number % $z == 0){
+                    $is_prime = false;
+                    break;
+                }
+            }
+        }
+        if($is_prime){
+            echo "$number is a prime number.";
+        } else{
+            echo "$number is not a prime number";
+        }
+    }
+    ?>
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Prime Number Checker</title>
+        
+    </head>
+    <body>
+        <form method = "post" action = " "> 
+            <label> Enter a number </label>
+            <input type = "number" name = " " number>
+            <input type = "submit" value = "Check">
+        </form>
+    </body>
+    </html>
+    <h3>Activity 11</h3>
+    <?php
+        $first = 0;
+        $second = 1;
+        $count = 0;
+        $limit = 10;
+        while($count < $limit){
+            echo $first. " ";
+            $next = $first + $second;
+            $first = $second;
+            $count++;
+        }
+    ?>
+    <h3>Activity 12</h3>
+    <?php
+        $reversi = readline('input something');
+        echo "output" .strrev($reversi);
+        ?>
 </body>
 </html>
